@@ -26,6 +26,7 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
+    /* visibility: hidden; */
 }
 
 nav {
@@ -35,6 +36,7 @@ nav {
     padding: 1rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    top:0;
 }
 
 nav button {

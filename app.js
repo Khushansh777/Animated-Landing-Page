@@ -31,7 +31,7 @@ gsap.from('.logos-test img',{
     opacity:0,
     stagger:0.1,
     scrollTrigger:{
-        markers:true,
+        // markers:true,
         scroller:'body',
         trigger:'.logos-test',
         start:'top 90%',
@@ -39,7 +39,8 @@ gsap.from('.logos-test img',{
     }
 })
 }
-// page1Aninmation()
+
+function page2animations(){
 const container = document.querySelectorAll('.elem');
 container.forEach(element => {
        element.addEventListener('mouseover',() =>{
@@ -57,7 +58,7 @@ element.addEventListener('mouseleave',() =>{
 
 const tl2 = gsap.timeline({
 scrollTrigger:{
-            markers:true,
+            // markers:true,
             scroller:'body',
             trigger:'.container',
             start:'top 80%',
@@ -89,6 +90,40 @@ tl2.from('.elem.line-2.right',{
     delay:0.5,
 },'lmao-2','-=0.5')
 
+}
+function navbaranimation() {
+    const navbar = document.querySelector('header');
+    let lastScroll = window.scrollY;
+    const threshold = 15;
+    
+    // Initial setup
+    gsap.set(navbar, { y: 0 });
+    
+    // Use a single timeline for better performance
+    const tl = gsap.timeline({ paused: true });
+    tl.to(navbar, {
+        y: -50,
+        duration: 0.3,
+        ease: "power1.out"
+    });
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        const scrollDiff = currentScroll - lastScroll;
+        
+        if (Math.abs(scrollDiff) > threshold) {
+            if (scrollDiff > 0 && currentScroll > 100) { // Scrolling down and past 100px
+                tl.play();
+            } else { // Scrolling up
+                tl.reverse();
+            }
+        }
+        lastScroll = currentScroll;
+    });
+}
+navbaranimation()
+// page1Aninmation()
+// page2animations()
 
 
  
